@@ -1,3 +1,4 @@
+import { resolve } from "node:path";
 import AutoImport from "unplugin-auto-import/vite";
 import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 import Components from "unplugin-vue-components/vite";
@@ -29,7 +30,6 @@ export default defineNuxtConfig({
     "@nuxt/icon",
     "@nuxtjs/color-mode",
     "@vueuse/nuxt",
-    "nuxt-lodash",
     "@nuxtjs/i18n",
   ].concat(siteConfig.platform === "cloudflare" ? "@nuxthub/core" : ""),
   // ssr
@@ -136,7 +136,41 @@ export default defineNuxtConfig({
   },
   // i18n
   i18n: {
-    vueI18n: "./lang/i18n.config.ts",
+    locales: [
+      {
+        code: "zh-CN",
+        language: "zh-CN",
+        name: "简体中文",
+      },
+      {
+        code: "en",
+        language: "en-US",
+        name: "English",
+      },
+      {
+        code: "ja-JP",
+        language: "ja-JP",
+        name: "日本語",
+      },
+      {
+        code: "ko-KR",
+        language: "ko-KR",
+        name: "한국어",
+      },
+    ],
+
+    defaultLocale: "ja-JP",
+    strategy: "prefix_except_default",
+
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: "i18n_redirected",
+      alwaysRedirect: true,
+      fallbackLocale: "ja-JP",
+      redirectOn: "root",
+    },
+
+    vueI18n: resolve("./lang/i18n.config.ts"),
   },
   // icon
   icon: {
