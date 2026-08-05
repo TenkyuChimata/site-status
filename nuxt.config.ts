@@ -97,7 +97,7 @@ export default defineNuxtConfig({
   },
   devServer: { port: 8566 },
   future: { compatibilityVersion: 4 },
-  compatibilityDate: "2024-11-11",
+  compatibilityDate: "2026-08-05",
   // vite
   vite: {
     plugins: [
