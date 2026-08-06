@@ -149,6 +149,7 @@
 </template>
 
 <script setup lang="ts">
+import { isEmpty } from "lodash-es";
 import type { SiteStatusType, SiteType } from "~~/types/main";
 
 const { t } = useI18n();
