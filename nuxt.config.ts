@@ -31,9 +31,13 @@ export default defineNuxtConfig({
     "@nuxtjs/color-mode",
     "@vueuse/nuxt",
     "@nuxtjs/i18n",
-  ].concat(siteConfig.platform === "cloudflare" ? "@nuxthub/core" : ""),
+  ],
   // ssr
   ssr: false,
+  // Nitro deployment preset
+  nitro: {
+    preset: "cloudflare_pages",
+  },
   // devtools
   devtools: { enabled: true },
   // app
