@@ -41,6 +41,8 @@
 - `star` 并 `fork` 本项目 😘
 - 可以使用全新的 [NuxtHub](https://hub.nuxt.com/) 来快捷的部署本项目，如果您有在 Vercel 上部署项目的经历，那么过程是大致相同的，当然，也可以使用 [Cloudflare Pages](https://pages.cloudflare.com/) 来部署
 - 在点击下一步之前请先配置好环境变量，具体内容请参考 `.env.example` 文件中的内容，其中 `API_KEY` 为必填项
+- 创建一个用于保存 last-known-good 状态快照的 Workers KV namespace，并在 Pages 的 Production 与 Preview 环境中添加名为 `STATUS_CACHE` 的 KV binding。本地未配置该 binding 时会自动降级为内存缓存；`wrangler.jsonc.example` 提供了不含真实 namespace ID 的 Wrangler 配置示例
+- 添加 binding 后重新部署 Pages。KV 只保存格式化后的公开状态数据，不会保存 API key 或 UptimeRobot 原始响应
 - 若进展顺利，你就可看到项目主页面了
 
 ### Vercel

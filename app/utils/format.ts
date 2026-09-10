@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import dayjs from "dayjs";
-import { formatNumber } from "./helper";
 import type {
   MonitorsDataResult,
   SiteDaysStatus,
   SiteStatusType,
 } from "~~/types/main";
+
+const formatNumber = (num: number) => Math.floor(num * 100) / 100;
 
 /**
  * Format site data.
@@ -15,10 +16,10 @@ import type {
 export const formatSiteData = (
   data: any,
   dates: dayjs.Dayjs[],
+  options: { showLink?: boolean; timestamp?: number } = {},
 ): MonitorsDataResult | undefined => {
   if (!data?.monitors) return undefined;
-  const { public: configPublic } = useRuntimeConfig();
-  const { showLink } = configPublic;
+  const showLink = options.showLink ?? useRuntimeConfig().public.showLink;
   const sites: any[] = data.monitors;
   // 解析站点数据
   const formatData = sites?.map((site: any): SiteStatusType => {
@@ -78,6 +79,6 @@ export const formatSiteData = (
       { count: formatData.length, ok: 0, error: 0, unknown: 0 },
     ),
     data: formatData,
-    timestamp: Date.now(),
+    timestamp: options.timestamp ?? Date.now(),
   };
 };

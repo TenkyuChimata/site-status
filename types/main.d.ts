@@ -53,6 +53,12 @@ export interface MonitorsResult {
   code: number;
   message: string;
   source: "cache" | "api";
+  // Cache layer used for this response. Null means freshly fetched or unavailable.
+  cache: "l1" | "kv" | null;
+  // Whether the returned data exceeded the freshness window.
+  stale: boolean;
+  // Age of the returned snapshot in seconds.
+  age: number;
   data: MonitorsDataResult | undefined;
 }
 

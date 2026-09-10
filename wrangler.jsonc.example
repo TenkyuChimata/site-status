@@ -1,0 +1,12 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "site-status",
+  "pages_build_output_dir": "dist",
+  "compatibility_date": "2026-09-08",
+  "kv_namespaces": [
+    {
+      "binding": "STATUS_CACHE",
+      "id": "<STATUS_CACHE_NAMESPACE_ID>"
+    }
+  ]
+}

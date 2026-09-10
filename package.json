@@ -21,38 +21,38 @@
     "vercel": "vercel login && vercel --prod"
   },
   "dependencies": {
-    "@nuxt/icon": "^2.4.1",
+    "@nuxt/icon": "^2.5.1",
     "@nuxtjs/i18n": "^10.6.0",
     "crypto-js": "^4.2.0",
-    "dayjs": "^1.11.21",
-    "jose": "^6.2.8",
+    "dayjs": "^1.11.23",
+    "jose": "^6.2.12",
     "lodash-es": "^4.18.1",
     "lru-cache": "^11.5.2",
-    "naive-ui": "^2.44.1",
-    "nuxt": "^4.5.1",
+    "naive-ui": "^2.45.3",
+    "nuxt": "^4.5.2",
     "nuxtjs-naive-ui": "1.0.2",
-    "pinia": "^4.0.2",
-    "vue": "^3.5.40"
+    "pinia": "^4.0.3",
+    "vue": "^3.5.42"
   },
   "devDependencies": {
-    "@nuxt/eslint": "^1.16.0",
+    "@nuxt/eslint": "^1.17.0",
     "@nuxtjs/color-mode": "^4.0.1",
-    "@pinia/nuxt": "^1.0.1",
+    "@pinia/nuxt": "^1.0.2",
     "@types/crypto-js": "^4.2.2",
-    "@types/node": "^26.1.2",
+    "@types/node": "^26.5.0",
     "@vite-pwa/assets-generator": "^1.0.2",
     "@vite-pwa/nuxt": "1.1.1",
     "@vueuse/core": "^14.4.0",
     "@vueuse/nuxt": "^14.4.0",
-    "eslint": "^10.8.0",
+    "eslint": "^10.10.0",
     "pinia-plugin-persistedstate": "^4.7.1",
     "prettier": "^3.9.6",
-    "sass": "^1.102.0",
-    "typescript": "^7.0.2",
+    "sass": "^1.104.0",
+    "typescript": "^6.0.3",
     "unplugin-auto-import": "^21.1.0",
     "unplugin-vue-components": "^32.1.0",
-    "vercel": "^58.5.1",
-    "wrangler": "^4.118.0"
+    "vercel": "^59.13.1",
+    "wrangler": "^4.130.0"
   },
   "packageManager": "pnpm@11.20.0"
 }

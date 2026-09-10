@@ -42,6 +42,8 @@ This project is deployed by default using [Cloudflare Pages](https://pages.cloud
 - `star` and `fork` this project 😘
 - You can use the new [NuxtHub](https://hub.nuxt.com/) to quickly deploy this project. If you have experience deploying on Vercel, the process is quite similar. Alternatively, you can use [Cloudflare Pages](https://pages.cloudflare.com/) for deployment.
 - Before moving on, make sure to configure the environment variables as detailed in the `.env.example` file. The `API_KEY` is a required field.
+- Create a Workers KV namespace for the last-known-good monitor snapshot, then add a Pages KV binding named `STATUS_CACHE` for both Production and Preview. The app falls back to in-memory caching during local development when this binding is absent. `wrangler.jsonc.example` shows the equivalent Wrangler configuration without a real namespace ID.
+- Redeploy the Pages project after adding the binding. The KV cache stores only formatted public status data; API keys and raw UptimeRobot responses are never cached.
 - If everything goes smoothly, you should be able to see the project’s main page.
 
 ### Vercel
