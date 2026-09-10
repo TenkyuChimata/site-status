@@ -41,11 +41,11 @@ import {
 
 const osTheme = useOsTheme();
 const colorMode = useColorMode();
-const statusStore = useStatusStore();
+const { locale } = useI18n();
 
 // 站点语言
 const siteLang = computed(() =>
-  statusStore.siteLang === "zh-CN"
+  locale.value === "zh-CN"
     ? { locale: zhCN, date: dateZhCN }
     : { locale: undefined, date: undefined },
 );

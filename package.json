@@ -1,7 +1,7 @@
 {
   "name": "site-status",
   "description": "a simple site-status pages, power by uptimerobot",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "author": {
     "name": "imsyy",
     "email": "one@imsyy.top",

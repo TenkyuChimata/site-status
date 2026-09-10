@@ -48,7 +48,7 @@ const formRules: FormRules = {
 const loading = ref<boolean>(false);
 
 // 尝试登录
-const toLogin = useDebounce(
+const toLogin = useDebounceFn(
   async () => {
     try {
       // 校验表单

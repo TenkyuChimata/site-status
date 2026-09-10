@@ -26,9 +26,10 @@
         </Transition>
         <!-- 语言 -->
         <n-popselect
-          v-model:value="statusStore.siteLang"
+          :value="selectedLocale"
           :options="langData"
           trigger="click"
+          @update:value="selectLocale"
         >
           <n-button
             :focusable="false"
@@ -66,10 +67,23 @@ import { NIcon, type DropdownOption } from "naive-ui";
 import { Icon } from "#components";
 import { langData } from "~/assets/data/text";
 
-const { t } = useI18n();
+const { locale, setLocale, t } = useI18n();
 const colorMode = useColorMode();
 const config = useRuntimeConfig();
 const statusStore = useStatusStore();
+
+const selectedLocale = computed(() =>
+  isSiteLocale(locale.value) ? locale.value : FALLBACK_SITE_LOCALE,
+);
+
+const selectLocale = async (value: unknown) => {
+  await applyManualLocale({
+    locale: value,
+    currentLocale: locale.value,
+    storage: getClientLocaleStorage(),
+    setLocale,
+  });
+};
 
 // 图标渲染
 const renderIcon = (icon: string) => () =>

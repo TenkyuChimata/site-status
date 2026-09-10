@@ -14,7 +14,7 @@ const siteConfig = {
   siteLogo: process.env.SITE_LOGO || "/favicon.ico",
   siteIcp: process.env.SITE_ICP || "",
   countDays: Number(process.env.COUNT_DAYS || 60),
-  showLink: process.env.SHOW_LINK === "true" || true,
+  showLink: process.env.SHOW_LINK !== "false",
   platform: process.env.DEPLOYMENT_PLATFORM || "cloudflare",
   version: pkg.version,
 };
@@ -34,10 +34,6 @@ export default defineNuxtConfig({
   ],
   // ssr
   ssr: false,
-  // Nitro deployment preset
-  nitro: {
-    preset: "cloudflare_pages",
-  },
   // devtools
   devtools: { enabled: true },
   // app
@@ -85,7 +81,7 @@ export default defineNuxtConfig({
           : undefined,
       ],
       htmlAttrs: {
-        lang: "zh-CN",
+        lang: "ja-JP",
       },
     },
   },
@@ -96,12 +92,20 @@ export default defineNuxtConfig({
     apiUrl: process.env.API_URL || "https://api.uptimerobot.com/v2/",
     apiKey: process.env.API_KEY,
     sitePassword: process.env.SITE_PASSWORD,
-    siteSecretKey: process.env.SITE_SECRE_KEY || "site-status",
+    siteSecretKey:
+      process.env.SITE_SECRET_KEY ||
+      process.env.SITE_SECRE_KEY ||
+      "site-status",
     public: siteConfig,
   },
   devServer: { port: 8566 },
   future: { compatibilityVersion: 4 },
   compatibilityDate: "2026-08-05",
+  // Nitro deployment preset
+  nitro: {
+    preset:
+      siteConfig.platform === "cloudflare" ? "cloudflare_pages" : undefined,
+  },
   // vite
   vite: {
     plugins: [
@@ -166,13 +170,7 @@ export default defineNuxtConfig({
     defaultLocale: "ja-JP",
     strategy: "prefix_except_default",
 
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: "i18n_redirected",
-      alwaysRedirect: true,
-      fallbackLocale: "ja-JP",
-      redirectOn: "root",
-    },
+    detectBrowserLanguage: false,
 
     vueI18n: resolve("./lang/i18n.config.ts"),
   },
